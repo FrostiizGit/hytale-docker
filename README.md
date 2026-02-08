@@ -38,6 +38,11 @@ docker-compose logs -f
 Edit `docker-compose.yml` to adjust:
 - `MAX_MEMORY` - Java heap size (default: 4G)
 - Port mapping (default: 5520/udp)
+- Resource limits in local Docker Compose: `mem_limit`, `mem_reservation`, `cpus`
+- Resource limits in Swarm mode: `deploy.resources`
+  
+Hytale's server manual states the server can run with at least 4GB of memory and requires Java 25; both x64 and arm64 are supported.
+Use those specs as a baseline, then tune memory and CPU based on your hardware and player load.
 
 ## Network
 

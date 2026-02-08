@@ -15,6 +15,9 @@ services:
       - FORCE_UPDATE=false
       - MAX_MEMORY=4G
     restart: unless-stopped
+    mem_limit: 8g
+    mem_reservation: 4g
+    cpus: "4.0"
     deploy:
       resources:
         limits:
