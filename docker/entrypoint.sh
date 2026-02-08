@@ -11,6 +11,12 @@ echo "=========================================="
 echo "Checking for updates..."
 cd "$SERVER_DIR"
 
+if [ ! -x "$DOWNLOADER" ]; then
+    echo "ERROR: hytale-downloader not found or not executable at $DOWNLOADER"
+    echo "Place the hytale-downloader binary in ./docker before building the image."
+    exit 1
+fi
+
 if [ ! -d "$SERVER_DIR/Server" ] || [ "${FORCE_UPDATE:-false}" = "true" ]; then
     echo "Downloading Hytale server..."
     rm -f "$SERVER_DIR/game.zip"

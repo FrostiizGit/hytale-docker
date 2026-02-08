@@ -38,6 +38,7 @@ docker-compose logs -f
 Edit `docker-compose.yml` to adjust:
 - `MAX_MEMORY` - Java heap size (default: 4G)
 - Port mapping (default: 5520/udp)
+- `FORCE_UPDATE` - set to `true` to re-download the server on container start
 - Resource limits in local Docker Compose: `mem_limit`, `mem_reservation`, `cpus`
 - Resource limits in Swarm mode: `deploy.resources`
   
