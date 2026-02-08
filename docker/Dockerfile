@@ -7,6 +7,7 @@ LABEL description="Hytale dedicated server with auto-update support"
 RUN apt-get update && apt-get install -y \
     unzip \
     netcat-openbsd \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # Create directories
@@ -29,9 +30,9 @@ EXPOSE 5520/udp
 # Set working directory
 WORKDIR /server
 
-# Health check
+# Health check (process-based, avoids UDP false positives)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD nc -zu localhost 5520 || exit 1
+    CMD pgrep -f "HytaleServer.jar" >/dev/null || exit 1
 
 # Run entrypoint
 ENTRYPOINT ["/entrypoint.sh"]

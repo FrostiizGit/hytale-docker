@@ -24,7 +24,7 @@ services:
           memory: 4G
           cpus: "2"
     healthcheck:
-      test: ["CMD", "nc", "-zu", "localhost", "5520"]
+      test: ["CMD-SHELL", "pgrep -f \"HytaleServer.jar\" >/dev/null || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
