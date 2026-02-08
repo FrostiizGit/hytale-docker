@@ -4,9 +4,8 @@ LABEL maintainer="Hytale Server Docker"
 LABEL description="Hytale dedicated server with auto-update support"
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
-    netcat-openbsd \
     procps \
     && rm -rf /var/lib/apt/lists/*
 
@@ -17,6 +16,7 @@ RUN mkdir -p /opt/hytale-downloader /server \
 
 # Copy the downloader binary
 COPY hytale-downloader /opt/hytale-downloader/hytale-downloader
+RUN echo "5dc7945e9d9603baf9b1f0dc6d18df3d61bdba38f2e5805c87b9e2c481315eaa  /opt/hytale-downloader/hytale-downloader" | sha256sum -c -
 RUN chmod +x /opt/hytale-downloader/hytale-downloader
 
 # Copy entrypoint script

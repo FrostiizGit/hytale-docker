@@ -5,6 +5,10 @@ Docker setup for running a Hytale dedicated server.
 ## Prerequisites
 - Download the `hytale-downloader` from [Hytale's website](https://downloader.hytale.com/hytale-downloader.zip).
 - Place the downloaded file in the `docker/` directory.
+  
+This image verifies the downloader checksum at build time. If you update the binary, recompute the SHA-256 and update the hash in `docker/Dockerfile`.
+Use:
+`shasum -a 256 docker/hytale-downloader` (macOS) or `sha256sum docker/hytale-downloader` (Linux).
 
 ## Quick Start
 
