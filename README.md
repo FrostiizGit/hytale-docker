@@ -44,6 +44,10 @@ Edit `docker-compose.yml` to adjust:
 Hytale's server manual states the server can run with at least 4GB of memory and requires Java 25; both x64 and arm64 are supported.
 Use those specs as a baseline, then tune memory and CPU based on your hardware and player load.
 
+## Security
+
+The container runs as a non-root `hytale` user. If you ever get permission errors in the `/server` volume, recreate the volume or fix its ownership.
+
 ## Network
 
 Ensure UDP port 5520 is open on your firewall:
